@@ -2,14 +2,25 @@
 #include <avr/interrupt.h>
 
 #define M_PI 3.14159265358979323846
+#define MAX_MODE 4
 
 #define button PB1
 #define hall PB3
 #define pot PB4
 
+unsigned char mode;
+
 ISR(INT0_vect)
 {
   // change the mode
+  mode++;
+  if (mode > MAX_MODE) {
+    mode = 0;
+  }
+  switch (mode) {
+    case 0:
+    break;
+  }
 }
 
 ISR(ANALOG_COMP_vect)
@@ -34,6 +45,6 @@ int main (void)
 
   while(1)
   {
-    
+
   }
 }
