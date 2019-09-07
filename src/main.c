@@ -10,8 +10,7 @@
 
 unsigned char mode;
 
-ISR(INT0_vect)
-{
+void buttonPressed() {
   // change the mode
   mode++;
   if (mode > MAX_MODE) {
@@ -45,6 +44,8 @@ int main (void)
 
   while(1)
   {
-
+    if (PORTB & (1<<button)) {
+      buttonPressed();
+    }
   }
 }
